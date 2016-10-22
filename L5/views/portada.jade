@@ -1,0 +1,18 @@
+extends base
+include mixins/picture
+
+block content
+    .jumbotron
+     h1  VINILSHOP 
+     p La mejor tienda de musica.
+    .menu
+      input.men(type='button', value='Todos')
+      .menu2
+        input(type='button', value='Todos los articulos', onclick="window.location.href='#'")
+        input(type='button', value='Segundamano', onclick="window.location.href='#'")
+      
+
+    section#s1.row
+        - for (var i = 0; i < pics.length; ++i) {
+            +picture(pics[i].name, pics[i].image, pics[i].getPrice())
+        - }
