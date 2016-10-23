@@ -1,10 +1,10 @@
-mixin picture(name, sourceImage, price)
+mixin picture(pic)
     article.col-md-3
-        img(src=sourceImage,border='3')
+        img(src=pic.image,border='1')
         br
-        | #{name}
+        | #{pic.name}
         br
-        | #{price}€
+        | #{pic.getPrice()}€
         br
         center
-        input.boton(type='button',value='Comprar',onclick="comprar('#{name}', '#{price}');")
+        input.boton(type='button',value='Comprar',onclick="comprar('#{pic.name}', '#{pic.getPrice()}');")

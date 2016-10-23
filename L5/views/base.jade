@@ -4,7 +4,7 @@ html(lang='en')
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        title Vinylshop
+        title Vinilshop 
         // Bootstrap
         link(href='public/estilos.css', rel='stylesheet')
         link(href='libs/css/bootstrap.min.css', rel='stylesheet')
@@ -13,7 +13,7 @@ html(lang='en')
         //if lt IE 9
           script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
           script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
-   body
+    body
         - var navmenu = { Portada: '/', "Segundamano": '/recent' }
         nav.navbar.navbar-default(role='navigation')
             div.navbar-header
@@ -22,7 +22,7 @@ html(lang='en')
                     span.iconbar
                     span.iconbar
                     span.iconbar
-                a(href='#').navbar-brand VINYLSHOP
+                a(href='#').navbar-brand VINILSHOP
             div#jcs-navbar-collapse-1.collapse.navbar-collapse
                 ul.nav.navbar-nav
 
@@ -35,7 +35,7 @@ html(lang='en')
             block content
 
             aside#total
-             h1#suma  SU CESTA:
+             p#suma  SU CESTA:
 
         // jQuery (necessary for Bootstrap's JavaScript plugins)
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')

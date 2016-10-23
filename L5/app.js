@@ -16,6 +16,7 @@ app.use("/libs",express.static('node_modules/bootstrap/dist'));
 // Our CSS and JS files
 app.use("/public",express.static('public'));
 
+
 /*
 
 var pics = [
@@ -29,29 +30,29 @@ var pics = [
 	new Item("SOUTH AFRICAN JAZZ","https://s-media-cache-ak0.pinimg.com/564x/b6/9e/e3/b69ee3e45bf83c2538de99208ed5e41e.jpg","10.99")
 
 */
+// Modulo 500px con la función searchByTerm() para conseguir fotos del resultado de la busqueda "Barcelona"
 
 // Use 500px API to get random pictures for our products
 var API500px = require('500px');
 var api500px = new API500px("YecP85RjzG08DN0MqvgFa0N780dNaDmJX6iTPbYp");
 var pics = [];
-api500px.photos.getPopular({'sort': 'created_at', 'rpp': '10','image_size':200},  function(error, results) {
-    		// Do something
-		pics = results.photos.map(function(a){
-        	// Compose object to be used in show items template
+api500px.photos.searchByTerm('Jazz club', {'sort': 'created_at', 'rpp': '12','image_size':200},  function(error, results) {
+	// Do something
+	pics = results.photos.map(function(a){
+		// Compose object to be used in show items template
 		return new Item(a.image_url);
-    });
+	});
 });
-
 
 // Render frontpage
 app.get('/', function (req, res) {
-	res.render('portada',{
-		pics: pics
-	});
+    res.render('portada',{
+        pics: pics
+    });
 });
 
 
 // Server start
 app.listen(3000, function () {
-	console.log('Example app listening on port 3000!');
+    console.log('Example app listening on port 3000!');
 });

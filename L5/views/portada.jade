@@ -3,16 +3,14 @@ include mixins/picture
 
 block content
     .jumbotron
-     h1  VINILSHOP 
-     p La mejor tienda de musica.
+     h1  VINILSHOP
+     p  La millor tenda online 
     .menu
-      input.men(type='button', value='Todos')
+      input.men(type='button', value='Menú principal')
       .menu2
         input(type='button', value='Todos los articulos', onclick="window.location.href='#'")
-        input(type='button', value='Segundamano', onclick="window.location.href='#'")
-      
-
+        input(type='button', value='OFERTAS', onclick="window.location.href='#'")
     section#s1.row
         - for (var i = 0; i < pics.length; ++i) {
-            +picture(pics[i].name, pics[i].image, pics[i].getPrice())
+            +picture(pics[i])
         - }
