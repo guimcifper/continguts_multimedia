@@ -15,23 +15,19 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-    console.log('a user connected');
-    io.emit('redibujar-marcador', marcador);
-    socket.on('disconnect', function(){
-        console.log('user disconnected');
+    io.emit('m_actual', marcador);
+    socket.on('m_visitante', function(){
+        marcador.visitante++;
+        io.emit('m_actual', marcador);
     });
-    socket.on('Gol-visitante', function(){
-        marcador.visitante+=1;
-        io.emit('redibujar-marcador', marcador);
-    });
-    socket.on('Gol-local', function(){
-        marcador.local+=1;
-        io.emit('redibujar-marcador', marcador);
+    socket.on('m_local', function(){
+        marcador.local++;
+        io.emit('m_actual', marcador);
     });
 });
 
 http.listen(3000, function(){
-  console.log('listening on *:3000');
+    console.log('listening on *:3000');
 });
 
 

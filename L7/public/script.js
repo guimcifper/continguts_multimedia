@@ -70,6 +70,8 @@ $(document).ready(function() {
     var redL = 0;
     var blueR = 0;
 
+    var socket = io();
+
     // Función para actualizar el movimiento de la bola
     function updateBola() {
 
@@ -112,14 +114,17 @@ $(document).ready(function() {
         bola.position.y += bola.velocidad * Math.sin(bola.angle);
     }
 
-    // Actualitza marcador
-    function cambiaMarcador(equipo){
+       function cambiaMarcador(equipo){
         if (equipo == 'R') {
-            blueR ++;
+            socket.emit('m_visitante');
         } else {
-            redL ++;
+            socket.emit('m_local');
         }
-    }
+        socket.on('m_actual', function(marcador){
+            redL=marcador.local;
+            blueR=marcador.visitante;
+        });
+}
 
     function renderCampo(ctx){
         // Camp
